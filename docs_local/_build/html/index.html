@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tutorial: How to create a lab notebook &#8212; mylabnotebook  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="tutorial-how-to-create-a-lab-notebook">
+<h1>Tutorial: How to create a lab notebook<a class="headerlink" href="#tutorial-how-to-create-a-lab-notebook" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>See <a class="reference external" href="https://chrplr.github.io/mynotebook">https://chrplr.github.io/mynotebook</a></p>
+<p>Imagine writing your notes, papers, using a simple text format
+(e.g. <a class="reference external" href="https://www.markdownguide.org/">Markdown</a>), in a local folder,
+and sharing them on the internet in just a few commands.</p>
+<p>This is what we propose to demonstrate here, using
+<a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="reference external" href="https://pages.github.com/">GitHub
+Pages</a>.</p>
+<p>Here are some examples of websites generated in this way:</p>
+<ul class="simple">
+<li></li>
+<li></li>
+</ul>
+<section id="pre-requisites">
+<h2>Pre-requisites:<a class="headerlink" href="#pre-requisites" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://git-scm.com/">Git</a></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using Windows, install <a class="reference external" href="(https://gitforwindows.org/">Git for
+Windows</a> which also provides
+<code class="docutils literal notranslate"><span class="pre">Git</span> <span class="pre">Bash</span></code>, the terminal/shell that will allow you to enter the command lines described in this document.</p>
+</div>
+<ol class="arabic" start="2">
+<li><p><a class="reference external" href="http://python.org">Python</a>, wtih the additional modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">markdown</span> <span class="n">sphinx</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">disqus</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">bibtext</span> <span class="n">alabaster</span> <span class="n">myst</span><span class="o">-</span><span class="n">parser</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>(If you want to avoid cluttering your python environement, you can
+install these in a new virtual environment. We show how to do that
+below.)</p>
+<ol class="arabic simple" start="3">
+<li><p>An account at <a class="reference external" href="http://github.com">http://github.com</a>. Sign up there if you do not already
+have one.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To avoid having to authentificate everytime you synchronize
+your files with GitHub, it is recommended to provide your public ssh
+key (<code class="docutils literal notranslate"><span class="pre">~/.ssh/xxxxx.pub</span></code>) to GitHub.com (in the parameters of your presonal account, in the submenu <code class="docutils literal notranslate"><span class="pre">Settings/SSH</span> <span class="pre">and</span> <span class="pre">GPG</span> <span class="pre">keys</span></code>)</p>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>TODO: Have an account at <a class="reference external" href="http://disqus.com">http://disqus.com</a></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial assumes that you know how to enter and execute commands in
+a terminal and to navigate the directories using <code class="docutils literal notranslate"><span class="pre">cd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code>,… (see,
+e.g., <a class="reference external" href="https://linuxcommand.sourceforge.io/index.php">https://linuxcommand.sourceforge.io/index.php</a>).</p>
+</div>
+</section>
+<section id="setting-up-the-folder-for-the-notebook">
+<h2>Setting up the folder for the notebook<a class="headerlink" href="#setting-up-the-folder-for-the-notebook" title="Link to this heading">¶</a></h2>
+<p>Let us first create and initialize a new folder where the notebook will
+reside:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">mynotebook</span>
+<span class="n">cd</span> <span class="n">mynotebook</span>
+<span class="n">git</span> <span class="n">init</span>
+<span class="n">echo</span> <span class="s2">&quot;edit files in docs_local&quot;</span> <span class="o">&gt;</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">mkdir</span> <span class="n">docs</span> <span class="n">docs_local</span>
+<span class="n">echo</span> <span class="s2">&quot;.venv/&quot;</span> <span class="o">&gt;.</span><span class="n">gitignore</span>
+<span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="n">My</span> <span class="n">first</span> <span class="n">commit</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>If you do not already have Sphinx installed in your python system, you
+may install it, for exameple in a local virtualenvironement</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">.</span><span class="n">venv</span>
+<span class="n">source</span> <span class="o">.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">markdown</span> <span class="n">sphinx</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">disqus</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">bibtext</span> <span class="n">alabaster</span> <span class="n">myst</span><span class="o">-</span><span class="n">parser</span>
+</pre></div>
+</div>
+<section id="setting-up-sphinx">
+<h3>Setting up Sphinx<a class="headerlink" href="#setting-up-sphinx" title="Link to this heading">¶</a></h3>
+<p>Following instructions from
+<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/quickstart.html">https://www.sphinx-doc.org/en/master/usage/quickstart.html</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">docs_local</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span>   <span class="c1"># enter the project name and your name when asked, accept all defaults</span>
+</pre></div>
+</div>
+<p>Then to generate the html pages (from the <cite>index.rst</cite> file)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>You can check the result with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xdg_open</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>Or by opening a web server locally</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span>
+<span class="n">python</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span>
+<span class="c1"># open ``http://localhot:8000`` in a web browser</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="creating-documents">
+<h2>Creating documents<a class="headerlink" href="#creating-documents" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">index.rst</span></code> is the root of your notebook.</p>
+<p>You can create markdown (<code class="docutils literal notranslate"><span class="pre">.md</span></code>) or ReST (<code class="docutils literal notranslate"><span class="pre">.rst</span></code> files) in docs and
+link them in <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>.</p>
+<p>You can put your images, pdf, resources in <code class="docutils literal notranslate"><span class="pre">_static</span></code> and link them in
+your documents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>![MyFigure](_static/figure1.png)
+</pre></div>
+</div>
+<p>TODO: develop this part! Explain how to document python code, add disqus comments, …</p>
+<p>When done editing, all you have to do to regenerate the site is to type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>The results is in <code class="docutils literal notranslate"><span class="pre">_build/html/index.html</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want, you can also create a pdf with <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">latexpdf</span></code>.</p>
+</div>
+</section>
+<section id="exporting-to-github-and-publishing-the-notebook">
+<h2>Exporting to github and publishing the notebook<a class="headerlink" href="#exporting-to-github-and-publishing-the-notebook" title="Link to this heading">¶</a></h2>
+<p>To link your local folder to GitHub, sign in <a class="reference external" href="https://github.com">https://github.com</a> and create a new repository, e.g. <code class="docutils literal notranslate"><span class="pre">mynotebook</span></code>, linked to the current existing folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">chrplr</span><span class="o">/</span><span class="n">mynotebook</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">M</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span>   <span class="c1"># check</span>
+</pre></div>
+</div>
+<p>On the github page of the project (in the ‘Code’ view), click on <code class="docutils literal notranslate"><span class="pre">Settings</span></code>. Go
+to Pages, in the section <code class="docutils literal notranslate"><span class="pre">build</span> <span class="pre">and</span> <span class="pre">deployment</span></code> select branch <code class="docutils literal notranslate"><span class="pre">main</span></code> and subfolder <code class="docutils literal notranslate"><span class="pre">docs</span></code>.</p>
+<p>TODO: insert screenshoot of gihub Pages settings here</p>
+<p>After a few minutes, you should see your web site at <a class="reference external" href="http://yourlogin.github.io/yourproject">http://yourlogin.github.io/yourproject</a></p>
+</section>
+<section id="updating-the-web-site">
+<h2>Updating the web site<a class="headerlink" href="#updating-the-web-site" title="Link to this heading">¶</a></h2>
+<p>When done, in the <code class="docutils literal notranslate"><span class="pre">docs_local</span></code> folder</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">docs_local</span>
+<span class="n">make</span> <span class="n">html</span>
+<span class="n">cd</span> <span class="o">..</span>
+<span class="n">rsync</span> <span class="o">-</span><span class="n">a</span> <span class="o">--</span><span class="n">delete</span> <span class="n">docs_local</span><span class="o">/</span><span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span> <span class="n">docs</span>
+<span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;&#39;</span>
+<span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">mylabnotebook</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Some Folk.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

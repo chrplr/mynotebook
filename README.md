@@ -1,24 +1,48 @@
-This is a template to create a notebook such as the ones at:
+Tutorial: How to create a lab notebook 
 
-* 
+See <https://chrplr.github.io/mynotebook>
+
+Imagine writing your notes, papers, using a simple text format (e.g. [Markdown](https://www.markdownguide.org/)), in a local folder, and sharing them on the internet in just a few commands.
+
+This is what we propose to demonstrate here, using [Sphinx](https://www.sphinx-doc.org/) and [github Pages](https://pages.github.com/).
+ 
+Here are some examples of websites generated in this way:
+
 *
 
-We rely on [sphinx](https://www.sphinx-doc.org/) and [github pages](https://pages.github.com/).
+*
+ 
+## pre-requisites:
+
+1. [Git](https://git-scm.com/) must be installed on your computer. If you are using Windows, install [Git for Windows]((https://gitforwindows.org/) which also provides `Git bash`, the terminal that will allow you to enter commands.
+
+2. [Python](http://python.org) must be installed, with the following packages:
+
+    markdown sphinx sphinx-disqus sphinxcontrib-bibtext alabaster myst-parser
+
+(If you want to avoid cluttering your python environement, you can install these in a new virtual enviromnent. We show how to do that below.)
+
+3. have an account at <http://github.com>. Sign up there if you do not have one. To avoid having to authentificate everytime you synchronize your files with github, it is recommended to provide your public ssh key (`~/.ssh/xxxxx.pub`) to github (in `Settings/SSH and GPG keys`)
+
+4. TODO: Have an account at disqus 
+
+This tutorial assumes that you know how to enter and execute commands in a terminal and to navigate the directories using `cd`, `ls`,... (see, e.g., <https://linuxcommand.sourceforge.io/index.php>).
+
 
 # Setting up the folder for the notebook
 
-First we initialize a folder for the notebook
+Let us first create and initialize a new folder where the notebook will reside:
 
     mkdir mynotebook
     cd mynotebook
     git init 
-    echo "This is my notebook" > README.md
-    mkdir docs 
+    echo "edit files in docs_local" > README.md
+    mkdir docs docs_local
     echo ".venv/" >.gitignore 
     git add .
     git commit -m My first commit'
 
-If you do not already have sphinx installed in your python system, you may install it, for exameple in a local virtualenvironement
+If you do not already have Sphinx installed in your python system, you may install it, for exameple in a local virtualenvironement
  
     python -m venv .venv
     source .venv/bin/activate
@@ -28,19 +52,66 @@ If you do not already have sphinx installed in your python system, you may insta
 
 Following instructions from <https://www.sphinx-doc.org/en/master/usage/quickstart.html>
 
-    cd docs
-    sphinx-quickstart   # answer 'y' when proposed to create subfolders `source` and `build`
+    cd docs_local
+    sphinx-quickstart   # enter the project name and your name when asked, accept all defaults
 
+## Generate the doc 
+
+    make html
+
+And check the result
+
+    xdg_open _build/html/index.html  
+
+You can also opening a web server locally
+
+    cd _build/html
+    python http.server
+
+Then open `http://localhot:8000` in a web browser
+    
+## Creating documents
+
+`index.rst` is the root of your notebook.
+
+You can create markdown (`.md`) or ReST (`.rst` files) in docs and link them in `index.rst`.
+
+You can put your images, pdf, resources in `_static` and link them in your documents:
+
+     ![MyFigure](_static/figure1.png)
+
+
+When you are done, you regenerate the documetn with `make html`. (you can alos `make latexpdf` toget
 
 ## Link to github pages:
 
+Log into <https://github.com> and create a new repository, e.g. `mynotebook`, that you link to the current existing folder:
 
-    Go to git hub, create a new repository, e.g. `mynotebook`, and link it to the local repo:
+    git remote add origin git@github.com:chrplr/mynotebook.git
+    git branch -M main
+    git push -u origin main
+    git remote -v   # check 
 
-git remote add origin git@github.com:chrplr/mynotebook.git
-git branch -M main
-git push -u origin main
+
+On the github page of the project ('Code' viwe), click on 'Settings. Go to Pages 
+
 
 # Write
 
-Go to 
+
+Edit `docs_local/index.rst`
+
+When done, in the `docs_local` folder
+
+    cd docs_local
+    make html
+	rsync -a --delete _build/html/ ../docs
+    git add ..
+    git commit -m 'first html build'
+    git push
+
+
+
+
+
+
