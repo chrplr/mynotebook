@@ -13,10 +13,12 @@ Tutorial: How to create a lab notebook
    :caption: Contents:
 
 
-See https://chrplr.github.io/mynotebook
+source: https://github.com/chrplr/mynotebook
+
+site: https://chrplr.github.io/mynotebook
 
 
-Imagine writing your notes, papers, using a simple text format
+Imagine writing your notes, papers, etc. using a simple text format
 (e.g. `Markdown <https://www.markdownguide.org/>`__), in a local folder,
 and sharing them on the internet in just a few commands.
 
@@ -31,16 +33,10 @@ Here are some examples of websites generated in this way:
 -  
 
 
-
 Pre-requisites:
 ---------------
 
-1. `Git <https://git-scm.com/>`__ 
-
-.. note::
-   If you are using Windows, install `Git for
-   Windows <(https://gitforwindows.org/>`__ which also provides
-   ``Git Bash``, the terminal/shell that will allow you to enter the command lines described in this document.
+1. `Git <https://git-scm.com/>`__ [#]_
 
 2. `Python <http://python.org>`__, wtih the additional modules:
    ::
@@ -52,12 +48,8 @@ install these in a new virtual environment. We show how to do that
 below.)
 
 3. An account at http://github.com. Sign up there if you do not already
-   have one.
+   have one. See [#]_
 
-.. note::
-   To avoid having to authentificate everytime you synchronize
-   your files with GitHub, it is recommended to provide your public ssh
-   key (``~/.ssh/xxxxx.pub``) to GitHub.com (in the parameters of your presonal account, in the submenu ``Settings/SSH and GPG keys``)
 
 4. TODO: Have an account at http://disqus.com
 
@@ -197,4 +189,5 @@ When done, in the ``docs_local`` folder
 
 
 
-
+.. [#] If you are using Windows, install `Git for Windows <(https://gitforwindows.org/>`__ which also provides ``Git Bash``, the terminal/shell that will allow you to enter the command lines described in this document.
+.. [#] To avoid having to authentificate everytime you synchronize your files with GitHub, it is recommended to provide your public ssh key (``~/.ssh/xxxxx.pub``) to GitHub.com (in the parameters of your presonal account, in the submenu ``Settings/SSH and GPG keys``)

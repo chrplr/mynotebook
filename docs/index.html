@@ -35,8 +35,9 @@
 <h1>Tutorial: How to create a lab notebook<a class="headerlink" href="#tutorial-how-to-create-a-lab-notebook" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>See <a class="reference external" href="https://chrplr.github.io/mynotebook">https://chrplr.github.io/mynotebook</a></p>
-<p>Imagine writing your notes, papers, using a simple text format
+<p>source: <a class="reference external" href="https://github.com/chrplr/mynotebook">https://github.com/chrplr/mynotebook</a></p>
+<p>site: <a class="reference external" href="https://chrplr.github.io/mynotebook">https://chrplr.github.io/mynotebook</a></p>
+<p>Imagine writing your notes, papers, etc. using a simple text format
 (e.g. <a class="reference external" href="https://www.markdownguide.org/">Markdown</a>), in a local folder,
 and sharing them on the internet in just a few commands.</p>
 <p>This is what we propose to demonstrate here, using
@@ -49,16 +50,8 @@ Pages</a>.</p>
 </ul>
 <section id="pre-requisites">
 <h2>Pre-requisites:<a class="headerlink" href="#pre-requisites" title="Link to this heading">¶</a></h2>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://git-scm.com/">Git</a></p></li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you are using Windows, install <a class="reference external" href="(https://gitforwindows.org/">Git for
-Windows</a> which also provides
-<code class="docutils literal notranslate"><span class="pre">Git</span> <span class="pre">Bash</span></code>, the terminal/shell that will allow you to enter the command lines described in this document.</p>
-</div>
-<ol class="arabic" start="2">
+<ol class="arabic">
+<li><p><a class="reference external" href="https://git-scm.com/">Git</a> <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
 <li><p><a class="reference external" href="http://python.org">Python</a>, wtih the additional modules:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">markdown</span> <span class="n">sphinx</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">disqus</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">bibtext</span> <span class="n">alabaster</span> <span class="n">myst</span><span class="o">-</span><span class="n">parser</span>
 </pre></div>
@@ -70,15 +63,7 @@ install these in a new virtual environment. We show how to do that
 below.)</p>
 <ol class="arabic simple" start="3">
 <li><p>An account at <a class="reference external" href="http://github.com">http://github.com</a>. Sign up there if you do not already
-have one.</p></li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>To avoid having to authentificate everytime you synchronize
-your files with GitHub, it is recommended to provide your public ssh
-key (<code class="docutils literal notranslate"><span class="pre">~/.ssh/xxxxx.pub</span></code>) to GitHub.com (in the parameters of your presonal account, in the submenu <code class="docutils literal notranslate"><span class="pre">Settings/SSH</span> <span class="pre">and</span> <span class="pre">GPG</span> <span class="pre">keys</span></code>)</p>
-</div>
-<ol class="arabic simple" start="4">
+have one. See <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></li>
 <li><p>TODO: Have an account at <a class="reference external" href="http://disqus.com">http://disqus.com</a></p></li>
 </ol>
 <div class="admonition note">
@@ -180,6 +165,16 @@ to Pages, in the section <code class="docutils literal notranslate"><span class=
 <span class="n">git</span> <span class="n">push</span>
 </pre></div>
 </div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>If you are using Windows, install <a class="reference external" href="(https://gitforwindows.org/">Git for Windows</a> which also provides <code class="docutils literal notranslate"><span class="pre">Git</span> <span class="pre">Bash</span></code>, the terminal/shell that will allow you to enter the command lines described in this document.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>To avoid having to authentificate everytime you synchronize your files with GitHub, it is recommended to provide your public ssh key (<code class="docutils literal notranslate"><span class="pre">~/.ssh/xxxxx.pub</span></code>) to GitHub.com (in the parameters of your presonal account, in the submenu <code class="docutils literal notranslate"><span class="pre">Settings/SSH</span> <span class="pre">and</span> <span class="pre">GPG</span> <span class="pre">keys</span></code>)</p>
+</aside>
+</aside>
 </section>
 </section>
 

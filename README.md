@@ -1,3 +1,5 @@
+See <http://chrplr.github.com/mynotebook>
+
 The source files are in `docs_local`
 
 To generate the pages locally
@@ -11,6 +13,6 @@ To publish at <https://chrplr.github.io/mynotebook>
     rsync -a --delete docs_local/_build/html/ docs
     touch docs/.nojekyll
     git add .
-    git commit -m ''
+    git commit -m "`date`"
     git push
 
