@@ -27,7 +27,7 @@ This is what we propose to demonstrate here, using
 `Sphinx <https://www.sphinx-doc.org/>`__ and `GitHub
 Pages <https://pages.github.com/>`__.
 
-This is based on `Nicolás Gravel <https://nicogravel.github.io/>`__ idea (see <https://nicogravel.github.io/UNICOG_ResearchLog/html/index.html>)
+This is based on an idea by `Nicolás Gravel <https://nicogravel.github.io/>`__ (see <https://nicogravel.github.io/UNICOG_ResearchLog/html/index.html>)
 
 Here are some examples of websites generated in this way:
 
@@ -177,7 +177,7 @@ After a few minutes, you should see your web site at http://yourlogin.github.io/
 Updating the web site
 ---------------------
 
-When done, in the ``docs_local`` folder
+When done, you can update and publish the web site as follows:
 
 ::
 
@@ -186,11 +186,12 @@ When done, in the ``docs_local`` folder
    cd ..
    rsync -a --delete docs_local/_build/html/ docs
    git add .
-   git commit -m ''
+   git commit -m "`date`"
    git push
 
+We provide a script ``update_and_publish.sh`` which does just that.
 
-
+---
 
 .. [#] If you are using Windows, install `Git for Windows <(https://gitforwindows.org/>`__ which also provides ``Git Bash``, the terminal/shell that will allow you to enter the command lines described in this document.
 .. [#] To avoid having to authentificate everytime you synchronize your files with GitHub, it is recommended to provide your public ssh key (``~/.ssh/xxxxx.pub``) to GitHub.com (in the parameters of your presonal account, in the submenu ``Settings/SSH and GPG keys``)

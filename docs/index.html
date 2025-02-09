@@ -43,7 +43,7 @@ and sharing them on the internet in just a few commands.</p>
 <p>This is what we propose to demonstrate here, using
 <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="reference external" href="https://pages.github.com/">GitHub
 Pages</a>.</p>
-<p>This is based on <a class="reference external" href="https://nicogravel.github.io/">Nicolás Gravel</a> idea (see &lt;<a class="reference external" href="https://nicogravel.github.io/UNICOG_ResearchLog/html/index.html">https://nicogravel.github.io/UNICOG_ResearchLog/html/index.html</a>&gt;)</p>
+<p>This is based on an idea by <a class="reference external" href="https://nicogravel.github.io/">Nicolás Gravel</a> (see &lt;<a class="reference external" href="https://nicogravel.github.io/UNICOG_ResearchLog/html/index.html">https://nicogravel.github.io/UNICOG_ResearchLog/html/index.html</a>&gt;)</p>
 <p>Here are some examples of websites generated in this way:</p>
 <ul class="simple">
 <li></li>
@@ -156,16 +156,18 @@ to Pages, in the section <code class="docutils literal notranslate"><span class=
 </section>
 <section id="updating-the-web-site">
 <h2>Updating the web site<a class="headerlink" href="#updating-the-web-site" title="Link to this heading">¶</a></h2>
-<p>When done, in the <code class="docutils literal notranslate"><span class="pre">docs_local</span></code> folder</p>
+<p>When done, you can update and publish the web site as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">docs_local</span>
 <span class="n">make</span> <span class="n">html</span>
 <span class="n">cd</span> <span class="o">..</span>
 <span class="n">rsync</span> <span class="o">-</span><span class="n">a</span> <span class="o">--</span><span class="n">delete</span> <span class="n">docs_local</span><span class="o">/</span><span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span> <span class="n">docs</span>
 <span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
-<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;&#39;</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;`date`&quot;</span>
 <span class="n">git</span> <span class="n">push</span>
 </pre></div>
 </div>
+<p>We provide a script <code class="docutils literal notranslate"><span class="pre">update_and_publish.sh</span></code> which does just that.</p>
+<p>—</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id3" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
