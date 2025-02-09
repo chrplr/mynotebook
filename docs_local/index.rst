@@ -22,13 +22,16 @@ Imagine writing your notes, papers, etc. using a simple text format
 (e.g. `Markdown <https://www.markdownguide.org/>`__), in a local folder,
 and sharing them on the internet in just a few commands.
 
+
 This is what we propose to demonstrate here, using
 `Sphinx <https://www.sphinx-doc.org/>`__ and `GitHub
 Pages <https://pages.github.com/>`__.
 
+This is based on `Nicolás Gravel <https://nicogravel.github.io/>`__ idea (see <https://nicogravel.github.io/UNICOG_ResearchLog/html/index.html>)
+
 Here are some examples of websites generated in this way:
 
--  
+- 
 
 -  
 
